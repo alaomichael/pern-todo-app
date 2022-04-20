@@ -39,7 +39,7 @@ const ListTodos = () => {
 
   console.log(todos);
 
-  let test = <LoadingTodos /> :
+  let test = todos.length === 'undefined'? <LoadingTodos /> :
       <table className="table mt-5 text-center">
         <thead>
           <tr>
@@ -67,7 +67,9 @@ const ListTodos = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table>;
+
+      console.log(test);
 
 
   return (

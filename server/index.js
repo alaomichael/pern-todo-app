@@ -17,7 +17,7 @@ app.get("/todos", async (req, res) => {
       res.json(allTodos.rows);
     } else {
 
-      res.json(["You currently do not have a todo item."]);
+      res.json([]);
     }
 
   } catch (err) {
