@@ -36,6 +36,33 @@ const ListTodos = () => {
 
   console.log(todos);
 
+  let test = (async (todos) => {
+    let todoAvailable = await todos.length;
+          if (todoAvailable > 0) {
+            {
+              todos.map((todo) => (
+                <tr key={todo.todo_id}>
+                  <td>{todo.description}</td>
+                  <td>
+                    <EditTodo todo={todo} />
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => deleteTodo(todo.todo_id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ));
+            }
+          } else {
+            return "Loading todo or empty todo";
+          }
+  })();
+
+  console.log("Todo state:" ,test);
   return (
     <Fragment>
       {" "}
