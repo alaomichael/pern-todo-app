@@ -8,14 +8,14 @@ import ListTodos from "./components/ListTodos";
 import LoadingTodos from "./components/LoadingTodos";
 
 function App() {
+  console.log(ListTodos.length);
 
-  let todoList = ListTodos.filter < 1 ? <LoadingTodos /> : <ListTodos />;
+  // let TodoList = ListTodos.length > 0 ? ListTodos : LoadingTodos;
   return (
     <Fragment>
       <div className="container">
         <InputTodo />
-          {todoList}
-
+        <ListTodos />
       </div>
     </Fragment>
   );

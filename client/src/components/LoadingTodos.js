@@ -16,7 +16,9 @@ const LoadingTodos = () => {
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody>{loading}</tbody>
+        <tbody>
+          <tr className="mt-20 text-center">{loading}</tr>
+        </tbody>
       </table>
     </Fragment>
   );
