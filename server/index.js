@@ -12,32 +12,49 @@ app.use(express.json()); //req.body
 app.get("/todos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
-    // res.json(allTodos.rows);
     if(allTodos){
       console.log(allTodos);
+      res.json(allTodos.rows);
+    } else {
+
+      res.send("This is the home page");
     }
 
-    res.send("This is the home page");
   } catch (err) {
     console.error(err.message);
   }
 });
 
+async function poolDemo() {
+  const now = await pool.query("SELECT NOW()");
+  // await pool.end();
+
+  return now;
+}
+
+// Use a self-calling function so we can use async / await.
+
+(async () => {
+  const poolResult = await poolDemo();
+  console.log("Time with pool 2: " + poolResult.rows[0]["now"]);
+})();
+
+
 //create a todo
 
-// app.post("/todos", async (req, res) => {
-//   try {
-//     const { description } = req.body;
-//     const newTodo = await pool.query(
-//       "INSERT INTO todo (description) VALUES($1) RETURNING *",
-//       [description]
-//     );
+app.post("/todos", async (req, res) => {
+  try {
+    const { description } = req.body;
+    const newTodo = await pool.query(
+      "INSERT INTO todo (description) VALUES($1) RETURNING *",
+      [description]
+    );
 
-//     res.json(newTodo.rows[0]);
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// });
+    res.json(newTodo.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 // //get all todos
 
