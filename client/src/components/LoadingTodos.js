@@ -1,27 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
+import PlaceholderLoading from "react-placeholder-loading";
 
-const LoadingTodos = () => {
-  const [loading, setLoading] = useState(
-    "You currently do not have a todo item."
-  );
+// Props
+// shape: 'rect' | 'circle'
+// width: number
+// height: number
+// colorStart?: string
+// colorEnd?: string
 
-  return (
-    <Fragment>
-      {" "}
-      <table className="table mt-5 text-center">
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="mt-20 text-center">{loading}</tr>
-        </tbody>
-      </table>
-    </Fragment>
-  );
-};
+const LoadingTodos = () => (
+  <PlaceholderLoading margin={20} shape="rect" width={300} height={60} colorStart={'red'} colorEnd={'green'} />
+);
 
 export default LoadingTodos;

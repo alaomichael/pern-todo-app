@@ -1,9 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 
+import LoadingTodos from "./LoadingTodos";
 import EditTodo from "./EditTodo";
+
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
+
 
   //delete todo function
 
@@ -36,9 +39,7 @@ const ListTodos = () => {
 
   console.log(todos);
 
-  return (
-    <Fragment>
-      {" "}
+  let test = <LoadingTodos /> :
       <table className="table mt-5 text-center">
         <thead>
           <tr>
@@ -67,7 +68,13 @@ const ListTodos = () => {
           ))}
         </tbody>
       </table>
-    </Fragment>
+
+
+  return (
+    <Fragment>
+      {" "}
+      { test}
+          </Fragment>
   );
 };
 
