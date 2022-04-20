@@ -5,13 +5,17 @@ import "./App.css";
 
 import InputTodo from "./components/InputTodo";
 import ListTodos from "./components/ListTodos";
+import LoadingTodos from "./components/LoadingTodos";
 
 function App() {
+
+  let todoList = ListTodos.filter < 1 ? <LoadingTodos /> : <ListTodos />;
   return (
     <Fragment>
       <div className="container">
         <InputTodo />
-        <ListTodos />
+          {todoList}
+
       </div>
     </Fragment>
   );

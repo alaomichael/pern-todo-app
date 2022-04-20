@@ -12,12 +12,12 @@ app.use(express.json()); //req.body
 app.get("/todos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
-    if(allTodos.rows.length >= 0){
+    if(allTodos.rows.length > 0){
       console.log(allTodos.rows);
       res.json(allTodos.rows);
     } else {
 
-      res.json({message:"You currently do not have a todo item."});
+      res.json(["You currently do not have a todo item."]);
     }
 
   } catch (err) {
